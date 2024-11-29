@@ -65,6 +65,7 @@ func setupPubSubClient(ctx context.Context, cfg *Config) (*pubsub.Client, *pubsu
 	}
 
 	sub := client.Subscription(cfg.Subscription)
+	sub.ReceiveSettings.MaxOutstandingMessages = 1
 	exists, err := sub.Exists(ctx)
 	if err != nil {
 		client.Close()

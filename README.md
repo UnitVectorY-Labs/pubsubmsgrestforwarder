@@ -48,4 +48,5 @@ The application continuously consumes messages from the specified Pub/Sub subscr
 ## Limitations
 
 - This application does not handle message retries on POST failures. Messages are Nacked and may be redelivered by Pub/Sub based on the subscription configuration.
+- Only a single message is processed at a time. The application does not support batch processing or high-throughput scenarios.
 - The tool is designed for local testing and does not include production-level security features.
