@@ -30,6 +30,8 @@ jobs:
     steps:
     - name: Checkout Code
       uses: actions/checkout@v4
+      with:
+        persist-credentials: false
 
     - name: Release Go Application
       uses: wangyoucao577/go-release-action@v1
