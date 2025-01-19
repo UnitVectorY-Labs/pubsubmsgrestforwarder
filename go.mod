@@ -1,6 +1,6 @@
 module pubsubmsgrestforwarder
 
-go 1.23.4
+go 1.23.5
 
 require cloud.google.com/go/pubsub v1.45.3
 
