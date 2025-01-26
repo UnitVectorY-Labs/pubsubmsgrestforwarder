@@ -1,4 +1,4 @@
-module pubsubmsgrestforwarder
+module github.com/UnitVectorY-Labs/pubsubmsgrestforwarder
 
 go 1.23.5
 
