@@ -1,6 +1,6 @@
 module github.com/UnitVectorY-Labs/pubsubmsgrestforwarder
 
-go 1.23.5
+go 1.23.6
 
 require cloud.google.com/go/pubsub v1.47.0
 
