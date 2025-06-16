@@ -16,6 +16,8 @@ import (
 	"cloud.google.com/go/pubsub"
 )
 
+var Version = "dev" // This will be set by the build systems to the release version
+
 // Config holds the configuration parsed from command-line arguments
 type Config struct {
 	Project      string
@@ -40,8 +42,14 @@ func parseFlags() (*Config, error) {
 	project := flag.String("project", "", "GCP project ID (required)")
 	subscription := flag.String("subscription", "", "Pub/Sub subscription ID (required)")
 	url := flag.String("url", "http://localhost:8080", "URL to POST messages to (optional)")
+	showVersion := flag.Bool("version", false, "Print version")
 
 	flag.Parse()
+
+	if *showVersion {
+		fmt.Println("Version:", Version)
+		os.Exit(0)
+	}
 
 	if *project == "" {
 		return nil, fmt.Errorf("missing required argument: --project")
