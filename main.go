@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"runtime/debug"
 	"strings"
 	"time"
 
@@ -164,6 +165,15 @@ func handleShutdown(cancelFunc context.CancelFunc) {
 }
 
 func main() {
+	// Set the build version from the build info if not set by the build system
+	if Version == "dev" || Version == "" {
+		if bi, ok := debug.ReadBuildInfo(); ok {
+			if bi.Main.Version != "" && bi.Main.Version != "(devel)" {
+				Version = bi.Main.Version
+			}
+		}
+	}
+
 	// Parse command-line arguments
 	cfg, err := parseFlags()
 	if err != nil {
