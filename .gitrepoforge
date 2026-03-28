@@ -1,0 +1,9 @@
+name: pubsubmsgrestforwarder
+default_branch: main
+config:
+  description: "A Go command-line application for local testing, simulating the Cloud Run Push use case by consuming Pub/Sub messages and forwarding them as RESTful HTTP POST requests."
+  license: MIT
+  language: go
+  release: release-go
+  justfile: true
+  codecov: false
