@@ -10,6 +10,8 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"regexp"
+	"runtime"
 	"runtime/debug"
 	"strings"
 	"time"
@@ -18,6 +20,16 @@ import (
 )
 
 var Version = "dev" // This will be set by the build systems to the release version
+
+var semverRe = regexp.MustCompile(`^\d+\.\d+\.\d+`)
+
+func buildVersionOutput(version string) string {
+	normalized := version
+	if semverRe.MatchString(normalized) && !strings.HasPrefix(normalized, "v") {
+		normalized = "v" + normalized
+	}
+	return fmt.Sprintf("%s (%s, %s/%s)", normalized, runtime.Version(), runtime.GOOS, runtime.GOARCH)
+}
 
 // Config holds the configuration parsed from command-line arguments
 type Config struct {
@@ -48,7 +60,7 @@ func parseFlags() (*Config, error) {
 	flag.Parse()
 
 	if *showVersion {
-		fmt.Println("Version:", Version)
+		fmt.Printf("pubsubmsgrestforwarder version %s\n", buildVersionOutput(Version))
 		os.Exit(0)
 	}
 
