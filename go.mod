@@ -1,6 +1,6 @@
 module github.com/UnitVectorY-Labs/pubsubmsgrestforwarder
 
-go 1.26.0 // GOVERSION
+go 1.27.0 // GOVERSION
 
 require cloud.google.com/go/pubsub v1.51.1
 
