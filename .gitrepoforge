@@ -8,3 +8,4 @@ config:
   justfile: true
   codecov:
     enabled: false
+  osv: sarif
